@@ -1,5 +1,6 @@
 import { fetchArtists } from '../api/artists-api';
 import '../../css/artist.css';
+import { ARTIST_LIMIT, DEFAULT_PAGE } from '../config/config';
 
 const list = document.querySelector('.js-artists');
 export function loadArtistCard(artist) {
@@ -42,10 +43,11 @@ export async function renderArtist(params) {
   if (!listArtist) return;
 
   const res = await fetchArtists(params);
-  console.log('response:', res);
+  // console.log('response:', res);
 
   const artists = res.artists;
-  listArtist.innerHTML = loadArtistCard(artists);
+  // listArtist.innerHTML = loadArtistCard(artists);
+  listArtist.insertAdjacentHTML('beforeend', loadArtistCard(artists));
 }
 
-if (list) renderArtist({ limit: 8, page: 1 });
+if (list) renderArtist({ limit: ARTIST_LIMIT, page: DEFAULT_PAGE });
