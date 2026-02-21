@@ -2,10 +2,19 @@
   padding: 0;
   border: none;
   border-radius: 16px;
+  outline: none;
+
+  background-color: transparent;
+  color: inherit;
 }
 
 .artist-modal::backdrop {
-  background: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease-in;
+}
+
+.artist-modal[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .artist-modal-content {
@@ -16,6 +25,39 @@
   color: #fff;
 
   position: relative;
+
+  transform: translateY(24px);
+  opacity: 0;
+  transition:
+    transform 0.3s ease-in,
+    opacity 0.3s ease-in;
+}
+
+.artist-modal[open] .artist-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.artist-modal.closing .artist-modal-content {
+  transform: translateY(24px);
+  opacity: 0;
+}
+
+.artist-modal.closing::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@starting-style {
+  .artist-modal[open] .artist-modal-content {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+
+.artist-modal,
+.artist-modal-content {
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 @media only screen and (min-width: 768px) {
@@ -56,6 +98,11 @@
 
 .modal-btn-close:hover {
   opacity: 0.6;
+}
+
+.modal-btn-close:focus {
+  outline: none;
+  opacity: 0.2;
 }
 
 .artist-title {
@@ -273,6 +320,11 @@ dt {
 
 .play-icon:hover {
   opacity: 0.6;
+}
+
+.play-icon:focus {
+  outline: none;
+  opacity: 0.2;
 }
 
 /* #endregion */

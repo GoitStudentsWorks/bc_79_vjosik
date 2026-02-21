@@ -1,7 +1,7 @@
-<dialog class="artist-modal" aria-labelledby="artist-title">
+<dialog class="artist-modal js-artist-modal" aria-labelledby="artist-title">
   <div class="artist-modal-content">
     <button
-      class="modal-btn-close"
+      class="modal-btn-close js-modal-btn-close"
       type="button"
       aria-label="Close artist modal"
     >
@@ -452,9 +452,3 @@
     </section>
   </div>
 </dialog>
-
-<!--! Цей Script потрібно буде видалити, коли реалізуємо відкриття модального вікна по кнопці  -->
-<script>
-  const modal = document.querySelector('.artist-modal');
-  modal.showModal();
-</script>
