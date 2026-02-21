@@ -148,10 +148,31 @@ body:has(dialog[open]) {
   }
 }
 
+.artist-ill-wrapper {
+  width: 272px;
+  height: 167px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 16px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
-  .artist-ill {
-    min-width: 654px;
+  .artist-ill-wrapper {
+    width: 654px;
+    height: 402px;
   }
+}
+
+@media only screen and (min-width: 1440px) {
+  .artist-ill-wrapper {
+    width: 576px;
+    height: 354px;
+  }
+}
+
+.artist-ill {
+  width: 100%;
+  height: auto;
 }
 
 .artist-info-wrapper {
@@ -197,6 +218,7 @@ dt {
 
 .biography-caption {
   font-weight: 600;
+  font-size: 18px;
 }
 .biography-descr {
   max-height: 297px;

@@ -40,11 +40,13 @@ export function renderArtistModalContent(artistData = {}, el) {
     </button>
     <h2 class="artist-title" id="artist-title">${artistData.strArtist ?? 'Unknown Artist'}</h2>
     <div class="artist-wrapper">
+     <div class="artist-ill-wrapper">
       <img
         class="artist-ill"
         src="${artistData.strArtistThumb}"
         alt="${artistData.strArtist}"
       />
+      </div>
 
       <div class="artist-info-wrapper">
         <dl class="meta"> 
