@@ -6,6 +6,7 @@ const swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: '.feedback-btn-next',
     prevEl: '.feedback-btn-prev',
+    disabledClass: 'is-disabled',
   },
   pagination: {
     el: '.swiper-pagination',
@@ -37,6 +38,12 @@ const swiper = new Swiper('.swiper', {
     },
   },
 });
+
+const btnNextFeedback = document.querySelector('.feedback-btn-next');
+const btnPrevFeedback = document.querySelector('.feedback-btn-prev');
+
+// btnNextFeedback.addEventListener('click', () => console.log('type next'));
+// btnPrevFeedback.addEventListener('click', () => console.log('type prev'));
 
 document
   .querySelector('.swiper-pagination')

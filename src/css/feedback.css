@@ -4,7 +4,6 @@
   position: relative;
 }
 .feedback-swiper {
-  /* background-color: rgba(255, 255, 255, 0.5); */
 }
 
 .feedback-swiper-wrapper {
@@ -56,7 +55,6 @@
   display: none;
 }
 .feedback-swiper-pagination {
-  /* background-color: rgb(15, 26, 26); */
 }
 .swiper-pagination {
 }
@@ -69,6 +67,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   pointer-events: auto;
+  transition: ease-in 200ms;
 }
 .swiper-pagination-bullet:hover {
   background-color: rgba(255, 255, 255, 0.6);
@@ -90,7 +89,6 @@
     display: block;
     position: absolute;
     top: 70px;
-    /* background-color: #060307; */
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 8px;
@@ -100,15 +98,24 @@
     outline: none;
     z-index: 10;
     cursor: pointer;
+    transition: ease-in 150ms;
 
     &:hover {
       background-color: #1e1c1f;
     }
     &:active {
-      background-color: #1e1c1f;
       border: none;
     }
   }
+  .is-disabled {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    cursor: no-drop;
+  }
+  .is-disabled > .feedback-btn-icon {
+    fill: transparent;
+  }
+
   .feedback-btn-icon {
     fill: #fff;
   }
