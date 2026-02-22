@@ -9,4 +9,6 @@ import { DEFAULT_PAGE, FEEDBACKS_LIMIT } from './js/config/config';
 import '../src/js/feedback/feedbacks';
 import { createFeedbackList } from '../src/js/feedback/feedbacks';
 
-fetchFeetbacks().then(createFeedbackList);
+import './js/artist/render-artist';
+import './js/close-open.js/mobile-menu';
+import './js/components/modal-artist/modal';
