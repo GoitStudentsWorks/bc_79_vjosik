@@ -4,7 +4,7 @@ import { ARTIST_LIMIT, DEFAULT_PAGE } from '../config/config';
 import { getPaginationParams, nextPage } from './pagination';
 
 const list = document.querySelector('.js-artists');
-const loadMoreBtn = document.querySelector('.load-more-btn')
+const loadMoreBtn = document.querySelector('.load-more-btn');
 
 export function loadArtistCard(artist) {
   return artist.map(createCardMarkup).join('');
@@ -53,24 +53,22 @@ export async function renderArtist(params) {
   listArtist.insertAdjacentHTML('beforeend', loadArtistCard(artists));
 
   if (loadMoreBtn) {
-  if (artists.length < params.limit) {
-    loadMoreBtn.classList.add('is-disabled')
+    if (artists.length < params.limit) {
+      loadMoreBtn.classList.add('is-disabled');
+    } else {
+      loadMoreBtn.classList.remove('is-disabled');
+    }
   }
-  else {
-    loadMoreBtn.classList.remove('is-disabled')
-  }
-}
 }
 
 if (list) renderArtist({ limit: ARTIST_LIMIT, page: DEFAULT_PAGE });
 
 if (loadMoreBtn) {
   loadMoreBtn.addEventListener('click', async () => {
-    if (loadMoreBtn.classList.contains('is-disabled')) return 
-    
+    if (loadMoreBtn.classList.contains('is-disabled')) return;
+
     nextPage();
     const params = getPaginationParams();
     await renderArtist(params);
-  })
+  });
 }
-
