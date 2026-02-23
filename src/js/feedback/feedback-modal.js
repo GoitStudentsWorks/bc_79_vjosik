@@ -1,6 +1,7 @@
 import Raty from 'raty-js';
 import { sendFeedbacks } from '../api/feedback-api';
 import { STAR_OFF_SVG, STAR_ON_SVG } from '../components/star-rating';
+import { lockBodyScroll, unlockBodyScroll } from '../utills/scrolling';
 
 const dialog = document.querySelector('.feedback-modal');
 const openBtn = document.querySelector('.btn');
@@ -16,6 +17,7 @@ const ANIMATION_DURATION = 300;
 openBtn.addEventListener('click', () => {
   dialog.classList.remove('closing');
   dialog.showModal();
+  lockBodyScroll();
   initFormRating();
   restoreDraft();
   checkFormValidity();
@@ -28,12 +30,14 @@ dialog.addEventListener('click', e => {
   if (!isCloseBtn && !isBackdrop) return;
 
   closeModal();
+  unlockBodyScroll();
 });
 
 dialog.addEventListener('cancel', e => {
   e.preventDefault();
 
   closeModal();
+  unlockBodyScroll();
 });
 
 function closeModal() {
@@ -105,6 +109,7 @@ async function onSubmitForm(event) {
     ratyInstance?.score(0);
     clearDraft();
     closeModal();
+    unlockBodyScroll();
   } catch (error) {
     console.log(error);
   }
