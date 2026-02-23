@@ -79,6 +79,7 @@
 }
 
 body:has(dialog[open]) {
+  /*проверяю работу своего хедера*/
   overflow: hidden;
 }
 /* #endregion */
