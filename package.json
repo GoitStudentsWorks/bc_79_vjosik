@@ -18,8 +18,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.13.5",
-    "overlayscrollbars": "^2.14.0",
-    "loaders.css": "^0.1.2",
+    "raty-js": "^4.3.0",
+    "swiper": "^12.1.2",
+    "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   }
