@@ -1,5 +1,10 @@
 import { fetchArtistsById } from '../../api/artists-api';
 import refs from '../../utills/refs';
+import {
+  initScroll,
+  lockBodyScroll,
+  unlockBodyScroll,
+} from '../../utills/scrolling';
 import { renderArtistModalContent } from './modal-artist-renderer';
 
 refs.artistList.addEventListener('click', onArtistListClick);
@@ -20,12 +25,15 @@ export async function onArtistListClick(event) {
     const artistInfo = await fetchArtistsById(artistId);
     renderArtistModalContent(artistInfo, refs.artistModal);
     refs.artistModal.showModal();
+    initScroll('.js-artist-modal');
+    lockBodyScroll();
 
     const closeBtn = refs.artistModal.querySelector('.js-modal-btn-close');
     if (!closeBtn) return;
 
     function onCloseClick() {
       closeModal();
+
       closeBtn.removeEventListener('click', onCloseClick);
     }
 
@@ -57,5 +65,6 @@ function closeModal() {
   setTimeout(() => {
     refs.artistModal.close();
     refs.artistModal.classList.remove('closing');
+    unlockBodyScroll();
   }, ANIMATION_DURATION);
 }

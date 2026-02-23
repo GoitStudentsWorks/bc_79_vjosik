@@ -1,12 +1,16 @@
 /* #region mobilestyle */
-header.container {
-  padding: 0 20px;
+.header {
+  height: 56px;
+  background-color: #060307;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: #060307;
+}
+header > .container {
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 .navbar-menu {
@@ -25,6 +29,7 @@ header.container {
   }
 }
 .logo-svg {
+  transition: ease-in 200ms;
   fill: rgb(255, 255, 255);
 }
 .mobil-menu-btn {
@@ -32,6 +37,7 @@ header.container {
   margin-left: auto;
   border: none;
   outline: none;
+  transition: ease-in 200ms;
 
   &:hover > .mobil-menu-svg,
   &:focus > .mobil-menu-svg {
@@ -42,6 +48,7 @@ header.container {
   }
 }
 .mobil-menu-svg {
+  transition: ease-in 200ms;
   fill: rgb(255, 255, 255);
 }
 .navbar-list {
@@ -51,7 +58,10 @@ header.container {
 
 /* #region Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
-  header.container {
+  .header {
+    height: 84px;
+  }
+  header > .container {
     padding: 0 64px;
   }
   .logo-link {
@@ -68,7 +78,8 @@ header.container {
     justify-content: space-between;
   }
   .navbar-item-link {
-    padding: 22.5px 0;
+    padding: 30.5px 0;
+    transition: ease-in 200ms;
 
     &:hover,
     &:focus {
@@ -79,9 +90,3 @@ header.container {
     }
   }
 }
-/* #endregion */
-
-/* #region Styles for Desktop devices */
-/* @media only screen and (min-width: 1440px) {
-} */
-/* #endregion */

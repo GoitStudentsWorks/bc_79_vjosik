@@ -39,3 +39,13 @@ h6 {
   clip-path: inset(50%);
   overflow: hidden;
 }
+
+/* для того, щоб не приховувався контент одразу під хедером*/
+body {
+  margin-top: 56px;
+}
+@media only screen and (min-width: 768px) {
+  body {
+    margin-top: 84px;
+  }
+}

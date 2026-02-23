@@ -1,3 +1,5 @@
+import { initScroll } from '../../utills/scrolling';
+
 export function renderArtistModalContent(artistData = {}, el) {
   const genresMarkup = Array.isArray(artistData.genres)
     ? artistData.genres
@@ -66,4 +68,5 @@ export function renderArtistModalContent(artistData = {}, el) {
     </div>
     </div>`;
   el.innerHTML = markup;
+  initScroll('.biography-descr');
 }
