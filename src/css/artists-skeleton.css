@@ -1,0 +1,85 @@
+.sk {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sk::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14),
+    transparent
+  );
+  animation: sk-shimmer 1.15s infinite;
+}
+
+@keyframes sk-shimmer {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+.artist-card-img--skeleton {
+  width: 100%;
+  height: 177px;
+  border-radius: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .artist-card-img--skeleton {
+    height: 432px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .artist-card-img--skeleton {
+    height: 393px;
+  }
+}
+
+.tags--skeleton {
+  min-width: 64px;
+  height: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sk-line {
+  height: 14px;
+  border-radius: 10px;
+}
+.sk-w-100 {
+  width: 100%;
+}
+.sk-w-90 {
+  width: 90%;
+}
+.sk-w-60 {
+  width: 60%;
+}
+.sk-w-35 {
+  width: 35%;
+}
+
+.artist-card-name--skeleton {
+  margin-bottom: 8px;
+  height: 32px;
+}
+
+.artist-card-desc--skeleton {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.artist-card-link--skeleton {
+  height: 16px;
+  border-radius: 10px;
+}

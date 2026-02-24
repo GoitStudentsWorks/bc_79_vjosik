@@ -1,13 +1,15 @@
 import { fetchArtists } from '../api/artists-api';
 import '../../css/artist.css';
+import { showArtistsSkeleton, removeArtistsSkeleton } from './artists-skeleton';
+import '../../css/artists-skeleton.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { ARTIST_LIMIT, DEFAULT_PAGE } from '../config/config';
 import { getPaginationParams, nextPage } from './pagination';
-import { showLoader, hideLoader } from '../loader/loader';
 
 const list = document.querySelector('.js-artists');
 const loadMoreBtn = document.querySelector('.load-more-btn');
 let isLoadingArtists = false;
-let isLoadMoreExhausted = false;
 
 export function loadArtistCard(artist) {
   return artist.map(createCardMarkup).join('');
@@ -44,35 +46,62 @@ function createCardMarkup({
         </li>`;
 }
 
-function toggleLoadMoreState(isDisabled) {
-  if (!loadMoreBtn) return;
-
-  loadMoreBtn.disabled = isDisabled;
-  loadMoreBtn.classList.toggle('is-disabled', isDisabled);
-}
-
 export async function renderArtist(params) {
-  if (!list || isLoadingArtists) return;
+  const listArtist = document.querySelector('.js-artists');
+  if (!listArtist) return;
+
+  const isFirstLoad = params.page === DEFAULT_PAGE;
+  if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+  if (loadMoreBtn) loadMoreBtn.classList.add('is-hidden');
+
+  showArtistsSkeleton(listArtist, {
+    count: params?.limit ?? 8,
+    mode: isFirstLoad ? 'replace' : 'append',
+  });
+
+  const timeoutId = setTimeout(() => {
+    iziToast.error({
+      title: 'Error',
+      message: 'Server is not responding. Please try again later.',
+      position: 'topRight',
+    });
+  }, 8000);
 
   try {
-    isLoadingArtists = true;
-    list.classList.add('js-loader-container');
-    list.setAttribute('aria-busy', 'true');
-    toggleLoadMoreState(true);
-    showLoader(list);
-
     const res = await fetchArtists(params);
-    const artists = res.artists;
+    const artists = res.artists ?? [];
 
-    list.insertAdjacentHTML('beforeend', loadArtistCard(artists));
-    isLoadMoreExhausted = artists.length < params.limit;
+    clearTimeout(timeoutId);
+
+    removeArtistsSkeleton(listArtist);
+
+    if (isFirstLoad) {
+      listArtist.innerHTML = loadArtistCard(artists);
+    } else {
+      listArtist.insertAdjacentHTML('beforeend', loadArtistCard(artists));
+    }
+
+    if (loadMoreBtn) loadMoreBtn.style.display = '';
+
+    if (loadMoreBtn) {
+      if (artists.length < params.limit) {
+        loadMoreBtn.classList.add('is-disabled');
+      } else {
+        loadMoreBtn.classList.remove('is-disabled');
+      }
+    }
   } catch (error) {
-    console.error(error);
-  } finally {
-    hideLoader(list);
-    list.setAttribute('aria-busy', 'false');
-    toggleLoadMoreState(isLoadMoreExhausted);
-    isLoadingArtists = false;
+    clearTimeout(timeoutId);
+
+    iziToast.error({
+      title: 'Error',
+      message: 'Failed to load artists. Please try again later.',
+      position: 'topRight',
+    });
+
+    setTimeout(() => {
+      removeArtistsSkeleton(listArtist);
+    }, 2000);
   }
 }
 
@@ -82,6 +111,7 @@ if (loadMoreBtn) {
   loadMoreBtn.addEventListener('click', async () => {
     if (isLoadingArtists || loadMoreBtn.classList.contains('is-disabled'))
       return;
+    if (loadMoreBtn.classList.contains('is-disabled')) return;
 
     nextPage();
     const params = getPaginationParams();
