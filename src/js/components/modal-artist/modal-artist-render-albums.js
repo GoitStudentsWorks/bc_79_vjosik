@@ -43,7 +43,7 @@ export function renderAlbumsSection(albums, container) {
                           <a href="${track.movie}" target="_blank"
                              aria-label="Play ${track.strTrack}">
                             <svg class="play-icon" width="24" height="24">
-                              <use href="../assets/icons/sprite.svg#icon-youtube"></use>
+                              <use href="/assets/icons/sprite.svg#icon-youtube"></use>
                             </svg>
                           </a>
                         `
