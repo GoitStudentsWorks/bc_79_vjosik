@@ -2,13 +2,16 @@ import Raty from 'raty-js';
 import { sendFeedbacks } from '../api/feedback-api';
 import { STAR_OFF_SVG, STAR_ON_SVG } from '../components/star-rating';
 import { lockBodyScroll, unlockBodyScroll } from '../utills/scrolling';
+import { showLoader, hideLoader } from '../loader/loader';
 
 const dialog = document.querySelector('.feedback-modal');
 const openBtn = document.querySelector('.btn');
 const form = document.querySelector('.feedback-form');
 const STORAGE_KEY = 'feedback-draft';
 const submitBtn = document.querySelector('.feedback-submit');
+const feedbackStatus = document.querySelector('.feedback-status');
 let ratyInstance;
+let isSubmitting = false;
 
 //? OPEN/CLOSE MODAL
 
@@ -20,6 +23,7 @@ openBtn.addEventListener('click', () => {
   lockBodyScroll();
   initFormRating();
   restoreDraft();
+  setFeedbackStatus('');
   checkFormValidity();
 });
 
@@ -96,6 +100,7 @@ form.elements.message.addEventListener('blur', validateMessageField);
 
 async function onSubmitForm(event) {
   event.preventDefault();
+  if (isSubmitting) return;
 
   const name = event.target.elements.name.value.trim();
   const message = event.target.elements.message.value.trim();
@@ -103,15 +108,23 @@ async function onSubmitForm(event) {
 
   const feedback = { name, descr: message, rating };
   try {
+    isSubmitting = true;
+    setFeedbackStatus('');
+    checkFormValidity();
+    showLoader(document.body);
+
     await sendFeedbacks(feedback);
     event.target.reset();
-    checkFormValidity();
     ratyInstance?.score(0);
     clearDraft();
-    closeModal();
-    unlockBodyScroll();
+    setFeedbackStatus('Thanks for your feedback!', 'success');
   } catch (error) {
     console.log(error);
+    setFeedbackStatus('Failed to send feedback. Please try again.', 'error');
+  } finally {
+    isSubmitting = false;
+    hideLoader(document.body);
+    checkFormValidity();
   }
 }
 
@@ -183,7 +196,20 @@ function checkFormValidity() {
   const name = form.elements.name.value.trim();
   const message = form.elements.message.value.trim();
 
-  const isValid = name.length >= 3 && message.length >= 10;
+  const isValid = name.length >= 3 && message.length >= 10 && !isSubmitting;
 
   submitBtn.disabled = !isValid;
+}
+
+function setFeedbackStatus(message, type = '') {
+  if (!feedbackStatus) return;
+
+  feedbackStatus.textContent = message;
+  feedbackStatus.classList.remove(
+    'feedback-status-success',
+    'feedback-status-error'
+  );
+
+  if (type === 'success') feedbackStatus.classList.add('feedback-status-success');
+  if (type === 'error') feedbackStatus.classList.add('feedback-status-error');
 }
