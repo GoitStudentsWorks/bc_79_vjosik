@@ -1,0 +1,15 @@
+.os-scrollbar .os-scrollbar-track {
+  background: transparent;
+  border-radius: 6px;
+}
+
+.os-scrollbar .os-scrollbar-handle {
+  background: #764191;
+  opacity: 0.7;
+  border-radius: 6px;
+}
+
+body .os-scrollbar,
+dialog .os-scrollbar {
+  --os-size: 10px;
+}
