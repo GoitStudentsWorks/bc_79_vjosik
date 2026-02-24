@@ -5,6 +5,6 @@ import './js/artist/render-artist';
 import './js/close-open.js/mobile-menu';
 import './js/components/modal-artist/modal';
 import './js/feedback/feedback-modal';
-import '/assets/icons/sprite.svg';
+
 
 fetchFeetbacks().then(createFeedbackList);

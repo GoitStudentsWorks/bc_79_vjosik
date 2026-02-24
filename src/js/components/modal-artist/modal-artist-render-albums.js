@@ -1,3 +1,5 @@
+import '/assets/icons/sprite.svg';
+
 export function renderAlbumsSection(albums, container) {
   if (!container) return;
 

@@ -7,6 +7,7 @@ import iziToast from 'izitoast';
 import '../../css/artist.css';
 import '../../css/artists-skeleton.css';
 import 'izitoast/dist/css/iziToast.min.css';
+import '/assets/icons/sprite.svg';
 
 const list = document.querySelector('.js-artists');
 const loadMoreBtn = document.querySelector('.load-more-btn');

@@ -1,5 +1,6 @@
 import { createArtistAvatar } from '../../helpers/avatarMarkup';
 import { normalizeYear } from '../../helpers/normalizeYear';
+import '/assets/icons/sprite.svg';
 
 export function renderArtistModalContent(artistData = {}, el) {
   const genresMarkup = Array.isArray(artistData.genres)
