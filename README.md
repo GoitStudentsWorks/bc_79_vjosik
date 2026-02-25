@@ -1,113 +1,103 @@
-# Vanilla App Template
+# 🎧 ArtistsHub
 
-Цей проект було створено за допомогою Vite. Для знайомства та налаштування
-додаткових можливостей [звернись до документації](https://vitejs.dev/).
+**ArtistsHub** is a responsive web application for discovering music artists from around the world. Users can read biographies, and browse albums and tracks. This project was created as part of the GoIT Full Stack Bootcamp.
 
-## Створення репозиторію за шаблоном
+🔗 **Live Demo**  
+🌐 [View Project](https://vjosik.github.io/artists-project-ShoZKodom-team/)
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проекту. Для цього натисни на кнопку `«Use this template»` і
-обери опцію `«Create a new repository»`, як показано на зображенні.
+---
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+## 📌 About the Project
 
-На наступному етапі відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся, що репозиторій публічний, після чого натисни
-кнопку `«Create repository from template»`.
+ArtistsHub helps users discover musical artists from around the world. It features an accessible and responsive interface with a focus on usability, search and filtering capabilities, and modern design.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+**Key objectives:**
+- Practice real-world team collaboration
+- Use modern front-end tools and libraries
+- Follow accessibility, SEO, and responsive design best practices
+- Apply MVP architecture
 
-Після того, як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+---
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+## 🎨 Design Prototype
 
-Проскроливши сторінку до самого кінця, в секції `«Workflow permissions»` обери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проекту.
+🖌 [View Figma Design](https://www.figma.com/design/QzED11W6Vgdcv6VoXtvA3h/ArtistsHub?node-id=5999-10563&p=f&t=9b9kyuwT4taukKYL-0)  
+*Add your actual Figma link here*
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+---
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів та папок
-репозиторію-шаблону. Далі працюй з ним, як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби коміти та відправляй
-їх на GitHub.
+## ⚙️ Technologies Used
 
-## Підготовка до роботи
+- **HTML5**, **CSS3**
+- **JavaScript (ES6+)**
+- **Vite** — build tool and development server
+- **Axios** — HTTP requests
+- **tui-pagination** — pagination component
+- **Swiper** — modern touch slider
+- **izitoast** — toast notifications
+- **raty-js** — star rating library
+- **overlayscrollbars** — custom scrollbars
+- **loaders.css** — loading animations
+- **PostCSS** — CSS processing with media query sorting
+- **vite-plugin-html-inject** — HTML partials support
+- **Prettier** — code formatting
+- **Git & GitHub** — version control
+- **GitHub Pages** — deployment
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проекту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши в терміналі команду `npm run dev`.
-4. Перейдіть у браузері за адресою
-   [http://localhost:5173](http://localhost:5173). Ця сторінка буде автоматично
-   перезавантажуватись після збереження змін у файли проекту.
+---
 
-## Файли і папки
+## ✨ Features
 
-- Файли розмітки компонентів сторінки повинні лежати в папці `src/partials` та
-  імпортуватись до файлу `index.html`. Наприклад, файл з розміткою хедера
-  `header.html` створюємо у папці `partials` та імпортуємо в `index.html`.
-- Файли стилів повинні лежати в папці `src/css` та імпортуватись до HTML-файлів
-  сторінок. Наприклад, для `index.html` файл стилів називається `index.css`.
-- Зображення додавай до папки `src/img`. Збирач оптимізує їх, але тільки при
-  деплої продакшн версії проекту. Все це відбувається у хмарі, щоб не
-  навантажувати твій комп'ютер, тому що на слабких компʼютерах це може зайняти
-  багато часу.
+- 🧠 View detailed artist biographies
+- 💿 Browse albums and tracklists with YouTube integration
+- 📦 Dynamic pagination for artist results
+- 💬 Testimonials section with Swiper carousel
+- 🔄 Loading animations with loaders.css
+- 🍞 Toast notifications with izitoast
+- ⭐ Star rating system with raty-js
+- 🎨 Custom scrollbars with overlayscrollbars
+- 📱 Fully responsive layout (Mobile / Tablet / Desktop) — 320px / 768px / 1440px
+- ⚠️ Error handling and user-friendly messages
+- 🔒 Scroll lock on modal open
+- 🧩 Component-based code structure (MVP approach)
+- 🍔 Burger menu for mobile navigation
+- 🎯 Modals with backdrop click and ESC key support
 
-## Деплой
+---
 
-Продакшн версія проекту буде автоматично збиратися та деплоїтись на GitHub
-Pages, у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад,
-після прямого пуша або прийнятого пул-реквесту. Для цього необхідно у файлі
-`package.json` змінити значення прапора `--base=/<REPO>/`, для команди `build`,
-замінивши `<REPO>` на назву свого репозиторію, та відправити зміни на GitHub.
+## 👥 Team Members
 
-```json
-"build": "vite build --base=/<REPO>/",
-```
+| Name | Role | Main Responsibilities |
+|------|------|----------------------|
+| **Ihor Vzhos** | Team Lead | Project deployment, code review, feedback section + sprite + project setup + API requests handling |
+| **Yuliia Yarova** | Scrum Master | Modal window + modal card rendering + scroll |
+| **Anastasiia Zahliada** | Developer | About Us section + star rating implementation for reviews + skeleton |
+| **Artem Bahno** | Developer | Header section + Swiper implementation + iziToast |
+| **Tasia Shtyk** | Developer | Footer section + pagination function for artists block |
+| **Mariia Furman** | Developer | Burger menu modal + albums rendering in artist modal |
+| **Diana Pryhozhyna** | Developer | Hero section + loader implementation |
+| **Roman Kuzyshyn** | Developer | Artists section + artist cards rendering + add feedback |
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
 
-![GitHub Pages settings](./assets/repo-settings.png)
+---
 
-### Статус деплою
+## 🚀 Getting Started
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm or yarn
 
-- **Жовтий колір** - виконується збірка та деплой проекту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, збірки чи деплою сталася помилка.
+### Installation
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+```bash
+# Clone the repository
+git clone https://github.com/vjosik/artists-project-ShoZKodom-team.git
 
-![Deployment status](./assets/deploy-status.png)
+# Navigate to project directory
+cd artists-project-ShoZKodom-team
 
-### Жива сторінка
+# Install dependencies
+npm install
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною на вкладці `Settings` > `Pages` в налаштуваннях репозиторію.
-Наприклад, ось посилання на живу версію для цього репозиторію
-
-[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
-
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає
-помилок пов'язаних з неправильними шляхами до CSS та JS файлів проекту
-(**404**). Швидше за все у тебе неправильне значення прапора `--base` для
-команди `build` у файлі `package.json`.
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пуша у гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується та
-   проходить лінтинг та збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проекту
-   відправляється у гілку `gh-pages`. В іншому випадку, у лозі виконання скрипта
-   буде вказано в чому проблема.
+# Run development server
+npm run dev
