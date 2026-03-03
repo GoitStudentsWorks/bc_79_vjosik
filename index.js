@@ -50,7 +50,7 @@ import{a as U,S as te,R as _,i as b,O as H}from"./assets/vendor-Dr6RkfKe.js";(fu
       role="region"
     >
       ${a}
-    </div>`;return f+u}const M="/bc_79_vjosik111/assets/sprite-D7egZoH7.svg",E="js-section-loader";function ke(){return`
+    </div>`;return f+u}const M="/bc_79_vjosik/assets/sprite-D7egZoH7.svg",E="js-section-loader";function ke(){return`
     <div class="${E}">
       <div class="loader-inner line-scale">
         <div></div>
